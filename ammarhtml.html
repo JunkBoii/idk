@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title.لأستاذي الكريم عمار الشريف</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet" />
+<style>
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+    font-family: 'Cairo', sans-serif;
+  }
+  body, html {
+    height: 100%;
+    background: #faf9f7;
+    color: #2b2b2b;
+    direction: rtl;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  #app {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+  }
+  /* Card container */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow:
+      0 2px 8px rgba(0,0,0,0.12);
+    max-width: 420px;
+    width: 100%;
+    padding: 40px 30px 50px 30px;
+    text-align: center;
+    user-select: none;
+    transition: opacity 0.8s ease;
+  }
+  /* Header text */
+  .header-text {
+    font-weight: 700;
+    font-size: 2.6rem;
+    margin-bottom: 25px;
+    color: #444444;
+  }
+  /* Enter button */
+  .btn-enter {
+    background: #4a5568;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 36px;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(74, 85, 104, 0.4);
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+  .btn-enter:hover,
+  .btn-enter:focus {
+    background: #2d3748;
+    outline: none;
+  }
+  /* Thank you text */
+  .thank-you-text {
+    font-size: 1.15rem;
+    line-height: 1.65;
+    color: #3b3b3b;
+    margin-top: 15px;
+    user-select: text;
+  }
+  /* Poem line */
+  .poem-line {
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: #1a202c;
+    margin: 36px 0 15px 0;
+    letter-spacing: 0.04em;
+    user-select: text;
+  }
+  /* Poet's name */
+  .poet-name {
+    font-size: 1.1rem;
+    color: #4a5568;
+    font-style: italic;
+    margin-bottom: 40px;
+    user-select: text;
+  }
+  /* Signature */
+  .signature {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #2d3748;
+    user-select: text;
+    letter-spacing: 0.04em;
+  }
+  /* Responsive */
+  @media (max-width: 480px) {
+    .card {
+      padding: 30px 25px 40px 25px;
+      max-width: 320px;
+    }
+    .header-text {
+      font-size: 2rem;
+      margin-bottom: 18px;
+    }
+    .btn-enter {
+      padding: 14px 32px;
+      font-size: 1.05rem;
+    }
+    .thank-you-text {
+      font-size: 1rem;
+    }
+    .poem-line {
+      font-size: 1.2rem;
+      margin: 30px 0 10px 0;
+    }
+    .poet-name {
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+    .signature {
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <div id="app">
+    <!-- Enter Screen -->
+    <section id="enter-screen" class="card" aria-label="Welcome screen">
+      <div class="header-text" aria-label="Welcome header">لأستاذي الكريم</div>
+<div class="header-text" aria-label="Welcome header">عمار الشريف</div>
+      <button class="btn-enter" id="btnEnter" aria-label="Enter the site" type="button">أدخل</button>
+    </section>
+
+    <!-- Thank You Screen -->
+    <section id="thank-you-screen" class="card" aria-label="Thank you message" style="display:none; opacity: 0;">
+      <div class="header-text" aria-hidden="true">شكراً يا أستاذ</div>
+      <p class="thank-you-text" aria-label="Thank you message content">
+        الله يعطيك العافية على كونك مدرسنا المبدع،<br />
+        ومضبطنا بالدرجات بعد ما قصرت،<br />
+        وعلى صبرك وتحملك لنا حتى لما نكون مشاغبين.
+      </p>
+      <p class="poem-line" aria-label="Poem line">
+        حبك سكن قلبي ومفنود، والحب سنة عند الأشراف.
+      </p>
+      <p class="poet-name" aria-label="Poet name">- ميحد حمد</p>
+      <p class="signature" aria-label="Signature">مع تحيات أحمد خالد</p>
+    </section>
+  </div>
+
+<script>
+  const enterScreen = document.getElementById('enter-screen');
+  const thankYouScreen = document.getElementById('thank-you-screen');
+  const btnEnter = document.getElementById('btnEnter');
+
+  btnEnter.addEventListener('click', () => {
+    enterScreen.style.display = 'none';
+    thankYouScreen.style.display = 'block';
+    // Animate fade in
+    requestAnimationFrame(() => {
+      thankYouScreen.style.opacity = 1;
+    });
+    // Remove focus from button after click so arrow/focus ring disappears
+    btnEnter.blur();
+  });
+
+  btnEnter.addEventListener('keyup', e => {
+    if(e.key === 'Enter' || e.key === ' ') {
+      btnEnter.click();
+    }
+  });
+</script>
+</body>
+</html>
